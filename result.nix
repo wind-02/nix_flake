@@ -9,6 +9,7 @@
   };
 
   dev = {
-    test = import ./dev/test.nix { inherit pkgs; };
+    test_linux = import ./dev/test_linux.nix { inherit pkgs; };
+    test_aarch = import ./dev/test_darwin.nix { inherit pkgs; };
   };
 }

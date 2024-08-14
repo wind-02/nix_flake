@@ -9,11 +9,11 @@ on:
       - '*'
 
 jobs:
-  test:
+  test-ubuntu:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest]
         arch: [x86_64, aarch64]
 
     steps:
@@ -29,5 +29,27 @@ jobs:
       run: nix flake update
 
     - name: Run Development Tests
-      run: nix develop .#dev.test --command fastfetch
+      run: nix develop .#dev.test_linux --command fastfetch
+
+  test-macos:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest]
+        arch: [x86_64, aarch64]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Nix
+      uses: cachix/install-nix-action@v27
+      with:
+        extra_nix_config: experimental-features = nix-command flakes
+        github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Update Flake
+      run: nix flake update
+
+    - name: Run Development Tests
+      run: nix develop .#dev.test_darwin --command fastfetch
 
