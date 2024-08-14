@@ -22,11 +22,9 @@
       url = "github:nix-community/NUR";
     };
 
-    neovim-plugins.url = "github:nix-community/neovim-plugins";
-
   };
 
-  outputs = { nixpkgs, nixos-hardware, home-manager, darwin, nur, flake-utils, neovim-plugins, ... } @ inputs:
+  outputs = { nixpkgs, nixos-hardware, home-manager, darwin, nur, flake-utils, ... } @ inputs:
     let
       pkgs = import ./pkgs.nix { inherit nixpkgs; };
 
