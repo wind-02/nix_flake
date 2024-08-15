@@ -1,3 +1,5 @@
+[![GitHub Actions Status](https://github.com/wind-02/nix_flake/actions/workflows/flake.yml/badge.svg)](https://github.com/wind-02/nix_flake/actions/workflows/flake.yml)
+
 # Nix flake
 - Install Nix package manager
 ```
