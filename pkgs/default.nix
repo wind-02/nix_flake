@@ -13,7 +13,6 @@
     less
     podman
     feh
-    mpv
     p7zip
     pass
     home-manager
